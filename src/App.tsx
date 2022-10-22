@@ -1,33 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { PlusCircle } from "phosphor-react";
+import Logo from "./assets/Logo.svg";
+import { Board } from "./components/Board";
+import { Counter } from "./components/Counter";
+import { Input } from "./components/Input";
+import "./styles/global.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    return (
+        <div className="w-screen h-screen bg-gray-600">
+            <header className="bg-gray-700 h-[200px] flex items-center justify-center">
+                <img src={Logo} />
+            </header>
+            <div className="-mt-6 flex flex-col items-center justify-center">
+                <div className="gap-2 w-[48rem] flex flex-row items-center">
+                    <Input />
+                    <button className="gap-2 p-4 flex items-center rounded-lg text-sm leading-normal font-bold text-gray-100 bg-blue-500 hover:bg-blue-200 ">
+                        Criar <PlusCircle size={16} weight="bold" />
+                    </button>
+                </div>
+                <div className="w-[48rem] m-16 flex flex-col items-start gap-6">
+                    <div className="w-full flex justify-between">
+                        <div className="flex flex-row gap-2">
+                            <span className="text-sm font-bold text-blue-200">
+                                Tarefas Criadas
+                            </span>
+                            <Counter />
+                        </div>
+                        <div className="flex flex-row gap-2">
+                            <span className="text-sm font-bold text-purple-200">
+                                Concluídas
+                            </span>
+                            <Counter />
+                        </div>
+                    </div>
+                    <Board />
+                </div>
+            </div>
+        </div>
+    );
 }
 
-export default App
+export default App;
